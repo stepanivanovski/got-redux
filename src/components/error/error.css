@@ -1,0 +1,8 @@
+.random-block img {
+  width: 50%;
+  margin-bottom: 20px;
+}
+.error {
+  text-align: center;
+  font-size: 20px;
+}
