@@ -31,13 +31,12 @@ export default class ItemDetails extends Component {
 
   updateItem() {
     const {itemId, getData} = this.props;
+    console.log(itemId);
     if (!itemId) {
       return;
     }
-    console.log("запрос");
     getData(itemId)
       .then((item) => {
-        console.log(item);
         this.setState({item})
     })
   }

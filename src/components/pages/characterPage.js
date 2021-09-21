@@ -1,45 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../action/action'
 import ItemList from '../itemList/itemList';
 import ItemDetails, { Field } from '../itemDetails/itemDetails';
-import ErrorMessage from '../error/error';
 import serviceGOT from '../../services/serviceGOT';
 import RowBlock from '../rowBlock/rowBlock';
 
-export default class CharacterPage extends React.Component {
-
-  state = {
-    selectedChar: null,
-    error: false
-  }
+class CharacterPage extends React.Component {
 
   gotService = new serviceGOT();
-
-  onItemSelected = (id) => {
-    this.setState({
-      selectedChar: id
-    })
-  }
-
-  componentDidCatch() {
-    this.setState({error: true})
-  }
-
+  
   render() {
-
-    if (this.state.error) {
-      return <ErrorMessage/>
-    }
-
+    console.log(`Page ${this.props.detailsId}`);
     const itemList = (
       <ItemList 
-        onItemSelected={this.onItemSelected}
+        onItemSelected={this.props.selectDetailsId}
         getData={this.gotService.getAllCharacters}
         renderItem={({name, gender}) => { return `${name} ${gender}`}}/>
     );
 
     const charDetails = (
       <ItemDetails 
-        itemId={this.state.selectedChar}
+        itemId={this.props.detailsId}
         getData={this.gotService.getCharacter}>
           <Field field='gender' label='Gender'/>
           <Field field='born' label='Born'/>
@@ -53,3 +35,13 @@ export default class CharacterPage extends React.Component {
     )
   }
 }
+
+const mapStateProps = (state) => {
+  return {
+    detailsId: state.detailsId 
+  }
+}
+
+const mapDispatchProps = actions
+
+export default connect(mapStateProps, mapDispatchProps)(CharacterPage)

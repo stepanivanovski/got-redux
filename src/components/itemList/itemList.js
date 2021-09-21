@@ -35,7 +35,7 @@ class ItemList extends React.Component {
   
     const { data } = this.props
 
-    if (!data) {
+    if (data.length === 0) {
       return <Spinner/>
     }
 

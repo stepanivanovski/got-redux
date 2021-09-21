@@ -1,46 +1,27 @@
 import React from 'react';
 import ItemList from '../itemList/itemList';
+import { connect } from 'react-redux';
+import * as actions from '../../action/action'
 import ItemDetails, { Field } from '../itemDetails/itemDetails';
-import ErrorMessage from '../error/error';
 import serviceGOT from '../../services/serviceGOT';
 import RowBlock from '../rowBlock/rowBlock';
 
-
-export default class HousePage extends React.Component {
-
-  state = {
-    selectedHouse: null,
-    error: false
-  }
+ class HousePage extends React.Component {
 
   gotService = new serviceGOT();
 
-  onItemSelected = (id) => {
-    this.setState({
-      selectedHouse: id
-    })
-  }
-
-  componentDidCatch() {
-    this.setState({error: true})
-  }
-
   render() {
-
-    if (this.state.error) {
-      return <ErrorMessage/>
-    }
 
     const itemList = (
       <ItemList 
-        onItemSelected={this.onItemSelected}
+        onItemSelected={this.props.selectDetailsId}
         getData={this.gotService.getAllHouses}
         renderItem={({name}) => name}/>
     );
 
     const houseDetails = (
       <ItemDetails 
-        itemId={this.state.selectedHouse}
+        itemId={this.props.detailsId}
         getData={this.gotService.getHouse}>
           <Field field='region' label='Region'/>
           <Field field='words' label='Words'/>
@@ -55,3 +36,13 @@ export default class HousePage extends React.Component {
     )
   }
 }
+
+const mapStateProps = (state) => {
+  return {
+    detailsId: state.detailsId 
+  }
+}
+
+const mapDispatchProps = actions
+
+export default connect(mapStateProps, mapDispatchProps)(HousePage)

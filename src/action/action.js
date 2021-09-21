@@ -14,12 +14,23 @@ const dataLoaded = data => {
     payload: data
   }
 }
-const resetData = () => ({type: "RESET_DATA"})
+const resetData = () => {
+  console.log("jxbcnrf");
+  return ({type: "RESET_DATA"})
+}
+
+const selectDetailsId = id => {
+  return {
+    type: "SELECT_DETAILS_ID",
+    payload: id
+  }
+}
 
 export {
   setError,
   onRequested,
   charLoaded,
   dataLoaded,
-  resetData
+  resetData,
+  selectDetailsId,
 }

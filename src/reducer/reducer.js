@@ -2,7 +2,8 @@ const initialState = {
   loading: true,
   error: false,
   char: [],
-  data: []
+  data: [],
+  detailsId: null
 }
 
 const reducer = (state=initialState, action) => {
@@ -33,9 +34,14 @@ const reducer = (state=initialState, action) => {
     case "RESET_DATA":
       return {
         ...state,
-        data: []
+        data: [],
+        detailsId: null
       }
-      
+    case "SELECT_DETAILS_ID": 
+      return {
+        ...state,
+        detailsId: action.payload
+      }
     default:
       return state;
   }
