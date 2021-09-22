@@ -39,7 +39,7 @@ import RowBlock from '../components/rowBlock/rowBlock';
 
 const mapStateProps = (state) => {
   return {
-    detailsId: state.detailsId 
+    detailsId: state.detailsReducer.detailsId 
   }
 }
 

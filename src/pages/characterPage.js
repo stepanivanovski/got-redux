@@ -38,7 +38,7 @@ class CharacterPage extends React.Component {
 
 const mapStateProps = (state) => {
   return {
-    detailsId: state.detailsId 
+    detailsId: state.detailsReducer.detailsId 
   }
 }
 

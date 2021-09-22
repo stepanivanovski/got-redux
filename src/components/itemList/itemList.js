@@ -50,9 +50,10 @@ class ItemList extends React.Component {
 }
 
 const mapDispatchProps = actions;
+
 const mapStateProps = (state) => {
   return {
-    data: state.data
+    data: state.itemListReducer.itemListData
   }
 }
 

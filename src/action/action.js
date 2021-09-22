@@ -10,13 +10,12 @@ const onRequested = () => ({type: "REQUESTED"})
 
 const dataLoaded = data => {
   return {
-    type: "DATA_LOADED",
+    type: "ITEMLIST_DATA_LOADED",
     payload: data
   }
 }
 const resetData = () => {
-  console.log("jxbcnrf");
-  return ({type: "RESET_DATA"})
+  return ({type: "RESET_ITEMLIST_DATA"})
 }
 
 const selectDetailsId = id => {

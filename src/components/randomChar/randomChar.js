@@ -67,9 +67,9 @@ const View = ({char}) => {
 const mapDispatchProps = action;
 const mapStateProps = (state) => {
   return {
-    loading: state.loading,
-    error: state.error,
-    char: state.char
+    loading: state.charReducer.loading,
+    error: state.charReducer.error,
+    char: state.charReducer.char
   }
 }
 
