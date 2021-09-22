@@ -1,13 +1,13 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
-import Header from '../header/header';
-import RandomChar from '../randomChar/randomChar';
+import Header from '../components/header/header';
+import RandomChar from '../components/randomChar/randomChar';
 import CharacterPage from '../pages/characterPage';
 import HousePage from '../pages/housePage';
 import BookPage from '../pages/bookPage';
 import BooksItem from '../pages/booksItemPage';
-import Error from '../error/error'
+// import Error from '../components/error/error'
 
 import './app.css';
 

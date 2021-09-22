@@ -2,8 +2,10 @@ const initialState = {
   loading: true,
   error: false,
   char: [],
+
   data: [],
-  detailsId: null
+  detailsId: null,
+  detaisItem: {}
 }
 
 const reducer = (state=initialState, action) => {
@@ -26,6 +28,7 @@ const reducer = (state=initialState, action) => {
         error: true,
         loadig: false
       } 
+
     case "DATA_LOADED":
       return {
         ...state,
@@ -41,6 +44,11 @@ const reducer = (state=initialState, action) => {
       return {
         ...state,
         detailsId: action.payload
+      }
+    case "DETAILS_ITEM_LOADED":
+      return {
+        ...state,
+        detailsItem: action.payload
       }
     default:
       return state;

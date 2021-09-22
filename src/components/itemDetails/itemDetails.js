@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux"
+import * as actions from "../../action/action"
 
 import "./itemDetails.css";
 
@@ -13,11 +15,7 @@ const Field = ({item, field, label}) => {
 
 export {Field}
 
-export default class ItemDetails extends Component {
-  
-  state={
-    item: null
-  }
+class ItemDetails extends Component {
 
   componentDidMount() {
     this.updateItem();
@@ -37,12 +35,12 @@ export default class ItemDetails extends Component {
     }
     getData(itemId)
       .then((item) => {
-        this.setState({item})
+        this.props.detailsItemLoaded(item)
     })
   }
 
   render() {
-    const {item} = this.state
+    const {item} = this.props
 
     if (!item) {
       return <span className="select-error">Please select a character</span>
@@ -64,3 +62,13 @@ export default class ItemDetails extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    item: state.detailsItem
+  }
+}
+
+const mapDispatchProps = actions
+
+export default connect(mapStateToProps, mapDispatchProps)(ItemDetails)

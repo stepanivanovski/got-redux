@@ -1,10 +1,10 @@
 import React from 'react';
-import ItemList from '../itemList/itemList';
+import ItemList from '../components/itemList/itemList';
 import { connect } from 'react-redux';
-import * as actions from '../../action/action'
-import ItemDetails, { Field } from '../itemDetails/itemDetails';
-import serviceGOT from '../../services/serviceGOT';
-import RowBlock from '../rowBlock/rowBlock';
+import * as actions from '../action/action'
+import ItemDetails, { Field } from '../components/itemDetails/itemDetails';
+import serviceGOT from '../services/serviceGOT';
+import RowBlock from '../components/rowBlock/rowBlock';
 
  class HousePage extends React.Component {
 

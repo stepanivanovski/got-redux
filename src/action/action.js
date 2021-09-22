@@ -26,6 +26,13 @@ const selectDetailsId = id => {
   }
 }
 
+const detailsItemLoaded = (data) => {
+  return {
+    type: "DETAILS_ITEM_LOADED",
+    payload: data
+  }
+} 
+
 export {
   setError,
   onRequested,
@@ -33,4 +40,5 @@ export {
   dataLoaded,
   resetData,
   selectDetailsId,
+  detailsItemLoaded
 }
